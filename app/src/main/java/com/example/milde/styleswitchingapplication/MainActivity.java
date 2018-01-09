@@ -36,7 +36,11 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 root.setBackgroundColor(Color.parseColor("#fedcba"));
                 ImageView img = (ImageView) findViewById(R.id.imageView);
-                img.setImageResource(R.drawable.kaetzchen_01);
+                //img.setImageResource(R.drawable.kaetzchen_01);
+
+                int id = getResources().getIdentifier("kaetzchen_01", "drawable", getPackageName());
+                img.setImageResource(id);
+
             }
         });
 
