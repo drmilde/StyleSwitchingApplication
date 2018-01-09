@@ -26,7 +26,7 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 root.setBackgroundColor(Color.parseColor("#abcdef"));
                 ImageView img = (ImageView) findViewById(R.id.imageView);
-                img.setImageResource(R.drawable.ic_launcher_foreground);
+                img.setImageResource(R.drawable.fussball_01);
             }
         });
 
