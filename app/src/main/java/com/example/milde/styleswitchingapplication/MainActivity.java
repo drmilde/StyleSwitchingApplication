@@ -1,15 +1,11 @@
 package com.example.milde.styleswitchingapplication;
 
 import android.content.SharedPreferences;
-import android.graphics.Color;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
-
-import java.nio.BufferUnderflowException;
 
 public class MainActivity extends AppCompatActivity {
     private View root = null;
@@ -34,7 +30,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 AppState.getInstance().setCurrentStyle(fussball);
-                setDefaultLayout();
+                setDefaultStyle();
             }
         });
 
@@ -43,7 +39,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 AppState.getInstance().setCurrentStyle(kaetzchen);
-                setDefaultLayout();
+                setDefaultStyle();
             }
         });
 
@@ -51,6 +47,7 @@ public class MainActivity extends AppCompatActivity {
 
     private void initStyles() {
         AppState.getInstance().clearStyles();
+
         fussball = AppState.getInstance().newStyle("fussball");
         AppState.getInstance().setCurrentStyle(fussball);
         AppState.getInstance().addStyleId("backgroundColor", R.color.colorAccent);
@@ -64,12 +61,18 @@ public class MainActivity extends AppCompatActivity {
         AppState.getInstance().setCurrentStyle(fussball);
     }
 
-    private void setDefaultLayout() {
-        root.setBackgroundColor(getResources().getColor(AppState.getInstance().getStyleId("backgroundColor")));
+
+    // style einstellungen vornehmen
+
+    private void setDefaultStyle() {
+        root.setBackgroundColor(colorFromID(AppState.getInstance().getStyleId("backgroundColor")));
         ImageView img = (ImageView) findViewById(R.id.imageView);
         img.setImageResource(AppState.getInstance().getStyleId("image1"));
     }
 
+    private int colorFromID(int id) {
+        return getResources().getColor(id);
+    }
 
     // activity lifecycle routines ...
 
@@ -81,7 +84,7 @@ public class MainActivity extends AppCompatActivity {
         SharedPreferences sp = getSharedPreferences("preferences", this.MODE_PRIVATE);
         int currentStyle = sp.getInt("currentStyle", 0);
         AppState.getInstance().setCurrentStyle(currentStyle);
-        setDefaultLayout();
+        setDefaultStyle();
 
         // TODO laden der Preferences sollte in AppState passieren !
     }
