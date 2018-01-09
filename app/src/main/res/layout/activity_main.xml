@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="com.example.milde.styleswitchingapplication.MainActivity"
+    >
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Hello World!"
+        android:textSize="30sp"
+        android:layout_gravity="center"
+        />
+
+    <Button
+        android:id="@+id/btn_fuusball"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="fussball" />
+
+    <Button
+        android:id="@+id/btn_kaetzchen"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Kätzchen" />
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:srcCompat="@mipmap/ic_launcher_round"
+
+        android:layout_marginTop="40dp"
+
+        />
+
+</LinearLayout>
