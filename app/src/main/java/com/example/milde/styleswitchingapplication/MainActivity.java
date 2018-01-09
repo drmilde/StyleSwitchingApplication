@@ -77,21 +77,26 @@ public class MainActivity extends AppCompatActivity {
     protected void onResume() {
         super.onResume();
 
+        // laden aus shared preferences
         SharedPreferences sp = getSharedPreferences("preferences", this.MODE_PRIVATE);
         int currentStyle = sp.getInt("currentStyle", 0);
         AppState.getInstance().setCurrentStyle(currentStyle);
         setDefaultLayout();
 
-        // TODO hier auf die Einstellungen reagieren, also entsprechend das Layout wählen
+        // TODO laden der Preferences sollte in AppState passieren !
     }
 
     @Override
     protected void onPause() {
         super.onPause();
+
+        // speichern in shared preferences
         SharedPreferences sp = getSharedPreferences("preferences", this.MODE_PRIVATE);
         SharedPreferences.Editor editor = sp.edit();
         editor.putInt("currentStyle", AppState.getInstance().getCurrentStyle());
         editor.commit();
+
+        // TODO speichern der Preferences sollte in AppState passieren !
     }
 
 
